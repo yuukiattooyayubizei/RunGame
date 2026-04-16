@@ -2,6 +2,7 @@
 #include"math.h"
 #include "../../Common.h"
 #include "../../../Lib/Input/PadInput.h"
+#include "../../../Lib/Sound/sound.h"
 
 
 
@@ -55,6 +56,7 @@ int CResultScene::Loop()
 		Load();
 		m_tagResultScene = RESULT_SCENE_LOOP;
 		//BGMÇñ¬ÇÁÇ∑
+		RequestSound(BGMID_RESULT, DX_PLAYTYPE_BACK);
 		break;
 	case CResultScene::RESULT_SCENE_LOOP:
 		//èàóù
@@ -62,6 +64,7 @@ int CResultScene::Loop()
 		break;
 	case CResultScene::RESULT_SCENE_END:
 		//îjä¸
+		StopAllSound();
 		Exit();
 		m_tagResultScene = RESULT_SCENE_INIT;
 		m_ret = 1;

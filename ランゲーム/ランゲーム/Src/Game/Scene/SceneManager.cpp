@@ -1,5 +1,6 @@
 #include"sceneManager.h"
 #include"math.h"
+#include "../../Lib/Sound/sound.h"
 
 //定義関連
 
@@ -10,13 +11,15 @@ SceneManager::SceneManager()
 	m_TagScene = SCENE_TITLE;
 
 	m_Score = -1;
+
+	InitSound();
 }
 
 //デストラクタ
 SceneManager::~SceneManager()
 {
 	//破棄
-
+	ExitSound();
 }
 
 int SceneManager::Loop()
@@ -82,7 +85,7 @@ void SceneManager::Draw()
 void  SceneManager::Load()
 {
 
-
+	LoadSound();
 
 }
 

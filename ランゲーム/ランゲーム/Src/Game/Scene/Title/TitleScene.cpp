@@ -2,6 +2,7 @@
 #include"math.h"
 #include "../../Common.h"
 #include "../../../Lib/Input/PadInput.h"
+#include "../../../Lib/Sound/sound.h"
 
 //コンストラクタ
 CTitleScene::CTitleScene()
@@ -53,6 +54,7 @@ int CTitleScene::Loop()
 		Load();
 		m_tagTitleScene = TITLE_SCENE_LOOP;
 		//BGMを鳴らす
+		RequestSound(BGMID_TITLE, DX_PLAYTYPE_BACK);
 		break;
 	case CTitleScene::TITLE_SCENE_LOOP:
 		//処理
@@ -60,6 +62,7 @@ int CTitleScene::Loop()
 		break;
 	case CTitleScene::TITLE_SCENE_END:
 		//破棄
+		StopAllSound();
 		Exit();
 		m_tagTitleScene = TITLE_SCENE_INIT;
 		m_ret = 1;

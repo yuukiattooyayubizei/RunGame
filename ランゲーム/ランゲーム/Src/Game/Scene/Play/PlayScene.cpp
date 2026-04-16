@@ -9,6 +9,7 @@
 #include "../../Object/Trap/Trap1/Trap1.h"
 #include "../../Data/Data.h"
 #include "../../../Lib/Collsion/collsion.h"
+#include "../../../Lib/Sound/sound.h"
 
 using namespace std;
 
@@ -73,6 +74,7 @@ int CPlayScene::Loop()
 		Load();
 		m_tagPlayScene = PLAY_SCENE_LOOP;
 		//BGMÇñ¬ÇÁÇ∑
+		RequestSound(BGMID_GAME, DX_PLAYTYPE_BACK);
 		break;
 	case CPlayScene::PLAY_SCENE_LOOP:
 		//èàóù
@@ -81,6 +83,7 @@ int CPlayScene::Loop()
 	case CPlayScene::PLAY_SCENE_END:
 		//îjä¸
 		Exit();
+		StopAllSound();
 		m_tagPlayScene = PLAY_SCENE_INIT;
 		m_ret = 1;
 		break;
