@@ -129,9 +129,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\Game\BackGround\background.cpp" />
     <ClCompile Include="..\Src\Game\Data\Data.cpp" />
     <ClCompile Include="..\Src\Game\main.cpp" />
-    <ClCompile Include="..\Src\Game\Object\DataLoad\DataLoad.cpp" />
     <ClCompile Include="..\Src\Game\Object\Object.cpp" />
     <ClCompile Include="..\Src\Game\Object\Player\Player.cpp" />
     <ClCompile Include="..\Src\Game\Object\Trap\Trap.cpp" />
@@ -140,13 +140,15 @@
     <ClCompile Include="..\Src\Game\Scene\Result\Result.cpp" />
     <ClCompile Include="..\Src\Game\Scene\SceneManager.cpp" />
     <ClCompile Include="..\Src\Game\Scene\Title\TitleScene.cpp" />
+    <ClCompile Include="..\Src\Lib\Collsion\collsion.cpp" />
     <ClCompile Include="..\Src\Lib\Input\input.cpp" />
     <ClCompile Include="..\Src\Lib\Input\PadInput.cpp" />
+    <ClCompile Include="..\Src\Lib\Sound\sound.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\Game\BackGround\background.h" />
     <ClInclude Include="..\Src\Game\Common.h" />
     <ClInclude Include="..\Src\Game\Data\Data.h" />
-    <ClInclude Include="..\Src\Game\Object\DataLoad\DataLoad.h" />
     <ClInclude Include="..\Src\Game\Object\Object.h" />
     <ClInclude Include="..\Src\Game\Object\Player\Player.h" />
     <ClInclude Include="..\Src\Game\Object\Trap\Trap.h" />
@@ -156,8 +158,10 @@
     <ClInclude Include="..\Src\Game\Scene\Scene.h" />
     <ClInclude Include="..\Src\Game\Scene\SceneManager.h" />
     <ClInclude Include="..\Src\Game\Scene\Title\TitleScene.h" />
+    <ClInclude Include="..\Src\Lib\Collsion\collsion.h" />
     <ClInclude Include="..\Src\Lib\Input\input.h" />
     <ClInclude Include="..\Src\Lib\Input\PadInput.h" />
+    <ClInclude Include="..\Src\Lib\Sound\sound.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

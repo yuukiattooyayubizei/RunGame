@@ -2,6 +2,7 @@
 #include"math.h"
 #include "../../Common.h"
 #include "../../../Lib/Input/PadInput.h"
+#include "../../../Lib/Sound/sound.h"
 
 
 
@@ -35,7 +36,7 @@ void CResultScene::Exit()
 void CResultScene::Load()
 {
 	if (m_Resulthndl == -1)
-		m_Resulthndl = LoadGraph("Data/image/Result.png");
+		m_Resulthndl = LoadGraph("../Data/image/Result/Result.JPG");
 }
 
 int CResultScene::Loop()
@@ -55,6 +56,7 @@ int CResultScene::Loop()
 		Load();
 		m_tagResultScene = RESULT_SCENE_LOOP;
 		//BGMを鳴らす
+		RequestSound(BGMID_RESULT, DX_PLAYTYPE_BACK);
 		break;
 	case CResultScene::RESULT_SCENE_LOOP:
 		//処理
@@ -62,6 +64,7 @@ int CResultScene::Loop()
 		break;
 	case CResultScene::RESULT_SCENE_END:
 		//破棄
+		StopAllSound();
 		Exit();
 		m_tagResultScene = RESULT_SCENE_INIT;
 		m_ret = 1;
@@ -84,7 +87,6 @@ int CResultScene::Step()
 void CResultScene::Draw()
 {
 	//描画処理
-
-	DrawFormatString(32, 96, GetColor(255, 255, 255), "Kキーでタイトルに遷移");
 	DrawRotaGraph(SCREEN_SIZE_X / 2, SCREEN_SIZE_Y / 2, 1.0f, 0.0f, m_Resulthndl, TRUE);
+	DrawFormatString(32, 96, GetColor(255, 255, 255), "Kキーでタイトルに遷移");
 }

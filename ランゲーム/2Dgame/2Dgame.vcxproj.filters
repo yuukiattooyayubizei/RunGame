@@ -49,8 +49,11 @@
     <Filter Include="ソース ファイル\Game\Data">
       <UniqueIdentifier>{8a3c5915-a750-4834-ae18-24433324e03b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Game\Object\DataLoad">
-      <UniqueIdentifier>{5afba4ce-8347-4485-8851-02c15bb52820}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\Lib\Collsion">
+      <UniqueIdentifier>{764997ad-ba6a-46bf-bdc0-a5779199020f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Lib\Sound">
+      <UniqueIdentifier>{e4523b6f-b343-4640-85ae-5d978e771a1b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,8 +93,14 @@
     <ClCompile Include="..\Src\Game\Object\Trap\Trap.cpp">
       <Filter>ソース ファイル\Game\Object\Trap</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Game\Object\DataLoad\DataLoad.cpp">
-      <Filter>ソース ファイル\Game\Object\DataLoad</Filter>
+    <ClCompile Include="..\Src\Lib\Collsion\collsion.cpp">
+      <Filter>ソース ファイル\Lib\Collsion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\BackGround\background.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\Sound\sound.cpp">
+      <Filter>ソース ファイル\Lib\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,8 +143,14 @@
     <ClInclude Include="..\Src\Game\Object\Trap\Trap.h">
       <Filter>ソース ファイル\Game\Object\Trap</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\Game\Object\DataLoad\DataLoad.h">
-      <Filter>ソース ファイル\Game\Object\DataLoad</Filter>
+    <ClInclude Include="..\Src\Lib\Collsion\collsion.h">
+      <Filter>ソース ファイル\Lib\Collsion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\BackGround\background.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Sound\sound.h">
+      <Filter>ソース ファイル\Lib\Sound</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

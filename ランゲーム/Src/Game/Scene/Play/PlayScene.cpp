@@ -2,10 +2,16 @@
 #include"math.h"
 #include <iostream>
 #include <vector>
+#include<algorithm>
+#include<list>
 #include "../../Common.h"
 #include "../../../Lib/Input/PadInput.h"
 #include "../../Object/Trap/Trap1/Trap1.h"
 #include "../../Data/Data.h"
+#include "../../../Lib/Collsion/collsion.h"
+#include "../../../Lib/Sound/sound.h"
+
+using namespace std;
 
 
 //コンストラクタ
@@ -24,16 +30,19 @@ void CPlayScene::Init()
 {
 	m_Player = new CPlayer();
 	m_Object.push_back(m_Player);
-
-	m_Time = 60;
 }
 
 void CPlayScene::Exit()
 {
+	for_each(m_Object.begin(), m_Object.end(), [](CObject* object) {object->Exit(); });
+
 	for (auto obj : m_Object) {
 		obj->Exit();
 		delete obj;
 	}
+	m_Object.clear();
+
+	m_Player = nullptr;
 }
 
 void CPlayScene::Load()
@@ -42,10 +51,9 @@ void CPlayScene::Load()
 
 	Data->Load();
 
-	for (auto obj : m_Object) {
-		obj->Load();
-	}
-	
+	m_BackGround.Load();
+
+	for_each(m_Object.begin(), m_Object.end(), [](CObject* object) {object->Load(); });
 }
 
 int CPlayScene::Loop()
@@ -66,6 +74,7 @@ int CPlayScene::Loop()
 		Load();
 		m_tagPlayScene = PLAY_SCENE_LOOP;
 		//BGMを鳴らす
+		RequestSound(BGMID_GAME, DX_PLAYTYPE_BACK);
 		break;
 	case CPlayScene::PLAY_SCENE_LOOP:
 		//処理
@@ -74,6 +83,7 @@ int CPlayScene::Loop()
 	case CPlayScene::PLAY_SCENE_END:
 		//破棄
 		Exit();
+		StopAllSound();
 		m_tagPlayScene = PLAY_SCENE_INIT;
 		m_ret = 1;
 		break;
@@ -97,21 +107,61 @@ int CPlayScene::Step()
 		Data->ResetTime();
 	}
 
+	for_each(m_Object.begin(), m_Object.end(), [](CObject* object) {object->Step(); });
 	
-
-
-
+	//プレイヤーと罠のあたり判定
 	for (auto obj : m_Object) {
-		obj->Step();
+		//プレイヤーとは判定しない
+		//今回はプレイヤーと弾のみのはずなので、プレイヤー以外をすべて罠とみなす
+		if (obj->GetKind() == KIND_PLAYER)continue;
 
-		////下に通り過ぎた弾は消す
-		//m_Object.erase(
-		//	std::remove_if(m_Object.begin(), m_Object.end(),
-		//		[](const CObject& e) { return e.GetPos().y >= 900; }),
-		//	m_Object.end()
-		//);
-		
+		//値の決定
+		VECTOR squerePos1 = m_Player->GetPos();
+		VECTOR squerePos2 = obj->GetPos();
+
+		//プレイヤーの当たり判定を本来より小さくしておく
+		int width1 = m_Player->GetSize() * 0.6;
+		int height1 = m_Player->GetSize() * 0.6;
+
+		int width2 = Data->GetTrapData().m_Size;
+		int height2 = width2;
+
+		//背景を動かす
+		m_BackGround.Step();
+
+		//衝突しているかチェック
+		if (ChackHitSquereToSquere(squerePos1, squerePos2, width1, height1, width2, height2) == true)
+		{
+			return 1;
+		}
 	}
+	
+	//罠が下までいったら消す
+	for (auto it = m_Object.begin(); it != m_Object.end(); )
+	{
+		CObject* obj = *it;
+
+		//今回はプレイヤーと罠のみのはずなので、プレイヤー以外をすべて罠とみなす
+		if (obj->GetKind() == KIND_PLAYER)continue;
+
+		VECTOR pos = obj->GetPos();
+
+		if (pos.x <= -100)
+		{
+			obj->Exit();
+			delete obj;
+
+			//普通に消去すると、vectorが別物に変わってしまい、途中でエラーを起こしてしまう
+			//m_Object.eraseの返り値が、消した後の次の有効な所に設定されているため、これを使ってエラーを回避
+			it = m_Object.erase(it);
+			DrawFormatString(32, 216, GetColor(255, 255, 255), "消去完了");
+		}
+		else
+		{
+			++it;
+		}
+	}
+
 	if (CheckHitKey(KEY_INPUT_L))
 		return 1;
 	return 0;
@@ -119,9 +169,13 @@ int CPlayScene::Step()
 
 void CPlayScene::Draw()
 {
-	for (auto obj : m_Object) {
-		obj->Draw();
-	}
+	//背景の描画
+	m_BackGround.Draw();
+
+	for_each(m_Object.begin(), m_Object.end(), [](CObject* object) {object->Draw(); });
+
+
+
 	//描画処理
 	DrawFormatString(32, 96, GetColor(255, 255, 255), "プレイシーンLキーでリザルトに遷移");
 }

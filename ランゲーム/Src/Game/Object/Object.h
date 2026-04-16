@@ -12,6 +12,7 @@ protected:
     ObjectKind m_Kind;
     VECTOR m_Pos;
 public:
+    CObject();
     virtual ~CObject() {}
 
     virtual void Init() = 0;
@@ -21,4 +22,5 @@ public:
     virtual void Exit() = 0;
 
     VECTOR GetPos() const { return m_Pos; }
+    ObjectKind GetKind() const { return m_Kind; }
 };

@@ -4,6 +4,7 @@
 #include "../../Object/Player/Player.h"
 #include <vector>
 #include "../../Data/Data.h"
+#include "../../BackGround/background.h"
 
 //当たり判定を行うフィールドのマップチップの長さ
 static const int HIT_FIELD_MAP_CHIP_SIZE = 3;
@@ -22,10 +23,12 @@ private:
 		PLAY_SCENE_NUM,
 	};
 	tagPlayScene m_tagPlayScene;//状態遷移
-	//CPlayer m_Player;
+
 	std::vector<CObject*> m_Object;
 	CPlayer* m_Player;
-	int m_Time;
+	CBackGround m_BackGround;		//背景
+
+
 public:
 	//コンストラクタ・デストラクタ
 	CPlayScene();
