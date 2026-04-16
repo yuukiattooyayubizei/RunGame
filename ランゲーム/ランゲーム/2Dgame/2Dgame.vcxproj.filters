@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Game">
+      <UniqueIdentifier>{13bd82ac-3b5b-4dd7-b28c-dcf9090fa297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Lib">
+      <UniqueIdentifier>{c2e68a05-8885-4b40-9295-f65f8864d8a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Scene">
+      <UniqueIdentifier>{65fa96ec-be66-4b47-8ef8-0a35d5d7aaeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Scene\Play">
+      <UniqueIdentifier>{a2cb70fb-bb56-4830-b8bd-05f0e202213d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Scene\Result">
+      <UniqueIdentifier>{a95d3217-4959-47a1-ac8a-fda6f12cf1b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Scene\Title">
+      <UniqueIdentifier>{cc7d2bf9-6c2c-46c6-b9e8-8fd69c0a972a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Lib\Input">
+      <UniqueIdentifier>{d59b0d56-74c9-4d8e-be3e-7b2b6b0f0880}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Object">
+      <UniqueIdentifier>{70722778-1387-41bb-91ca-81b893348458}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Object\Player">
+      <UniqueIdentifier>{805e5b94-bbc9-472f-afab-c8bab046fe19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Object\Trap">
+      <UniqueIdentifier>{6527d133-6af7-41cb-b2ea-96a36975a829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Object\Trap\Trap1">
+      <UniqueIdentifier>{d636f963-4ac6-4107-8948-bb6bdc22ba89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Data">
+      <UniqueIdentifier>{8a3c5915-a750-4834-ae18-24433324e03b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Lib\Collsion">
+      <UniqueIdentifier>{764997ad-ba6a-46bf-bdc0-a5779199020f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Lib\Sound">
+      <UniqueIdentifier>{e4523b6f-b343-4640-85ae-5d978e771a1b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\Game\main.cpp">
+      <Filter>ソース ファイル\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Scene\SceneManager.cpp">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Scene\Title\TitleScene.cpp">
+      <Filter>ソース ファイル\Game\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Scene\Result\Result.cpp">
+      <Filter>ソース ファイル\Game\Scene\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Scene\Play\PlayScene.cpp">
+      <Filter>ソース ファイル\Game\Scene\Play</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\Input\input.cpp">
+      <Filter>ソース ファイル\Lib\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\Input\PadInput.cpp">
+      <Filter>ソース ファイル\Lib\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Object\Object.cpp">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Object\Player\Player.cpp">
+      <Filter>ソース ファイル\Game\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Object\Trap\Trap1\Trap1.cpp">
+      <Filter>ソース ファイル\Game\Object\Trap\Trap1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Data\Data.cpp">
+      <Filter>ソース ファイル\Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Object\Trap\Trap.cpp">
+      <Filter>ソース ファイル\Game\Object\Trap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\Collsion\collsion.cpp">
+      <Filter>ソース ファイル\Lib\Collsion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\BackGround\background.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\Sound\sound.cpp">
+      <Filter>ソース ファイル\Lib\Sound</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\Game\Scene\Scene.h">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Scene\SceneManager.h">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Scene\Title\TitleScene.h">
+      <Filter>ソース ファイル\Game\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Scene\Result\ResultScene.h">
+      <Filter>ソース ファイル\Game\Scene\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Scene\Play\PlayScene.h">
+      <Filter>ソース ファイル\Game\Scene\Play</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Common.h">
+      <Filter>ソース ファイル\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Input\input.h">
+      <Filter>ソース ファイル\Lib\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Input\PadInput.h">
+      <Filter>ソース ファイル\Lib\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Object\Object.h">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Object\Player\Player.h">
+      <Filter>ソース ファイル\Game\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Object\Trap\Trap1\Trap1.h">
+      <Filter>ソース ファイル\Game\Object\Trap\Trap1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Data\Data.h">
+      <Filter>ソース ファイル\Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Object\Trap\Trap.h">
+      <Filter>ソース ファイル\Game\Object\Trap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Collsion\collsion.h">
+      <Filter>ソース ファイル\Lib\Collsion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\BackGround\background.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Sound\sound.h">
+      <Filter>ソース ファイル\Lib\Sound</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
