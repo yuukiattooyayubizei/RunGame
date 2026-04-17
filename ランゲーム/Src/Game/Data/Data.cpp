@@ -4,10 +4,18 @@ CData* CData::m_Instance = NULL;
 
 CData::CData() {
 	m_Time = 0;
+	m_Score = 0;
+	m_Spd = 1;
 }
 
 CData::~CData() {
 
+}
+
+void CData::Init() {
+	m_Time = 0;
+	m_Score = 0;
+	m_Spd = 1;
 }
 
 CData* CData::GetInstance() {

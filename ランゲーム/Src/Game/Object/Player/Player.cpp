@@ -28,6 +28,7 @@ void CPlayer::Init(){
 	m_Anim.m_AnimNum = 0;
 	m_Anim.m_AnimControl = ANIM_IDLE;
 	m_AnimChengeWait = 0;
+	m_IsSteepDive = false;
 }
 
 void CPlayer::Load() {
@@ -134,15 +135,35 @@ void CPlayer::Step() {
 			m_Anim.m_AnimCount = 0;
 		}
 	}
+	if (IsInputRep(KEY_S))
+	{
+		m_IsSteepDive = true;
+		//上昇中ならすぐに落下に切り替える
+		if (m_NowJumpPower >= 0.0f)
+			m_NowJumpPower = 0.0f;
+	}
+	else
+		m_IsSteepDive = false;
 
-	m_Pos.y -= m_NowJumpPower;
+	//重力の処理
+	//急降下中は早く落ちる
+	if(m_IsSteepDive == true)
+		m_Pos.y -= m_NowJumpPower * 2;
+	else
+		m_Pos.y -= m_NowJumpPower;
 
 	m_NowJumpPower -= m_Gravity;
 
+	//高さの上限下限の処理
 	if (m_Pos.y >= 720 - m_Size / 2)
 	{
 		m_Pos.y = 720 - m_Size / 2;
 		m_IsJump = false;
+	}
+	if (m_Pos.y <= m_Size / 2)
+	{
+		m_Pos.y = m_Size / 2;
+		m_NowJumpPower = -1.0f;
 	}
 
 	//アニメーション関連

@@ -36,6 +36,7 @@ private:
     bool m_IsJump;              //ジャンプしたかどうか
     int m_AnimChengeWait;       //アニメーション画像を次の画像に変えるまでの時間
     int m_Size;                 //プレイヤーの大きさ
+    bool m_IsSteepDive;         //急降下中かどうか
 public:
     ~CPlayer()override;
 

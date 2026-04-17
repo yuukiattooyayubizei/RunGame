@@ -1,6 +1,9 @@
 #pragma once
 #include<DxLib.h>
 #include"../Scene.h"
+#include "../../Score/Score.h"
+
+static const int EVALUATION_NUM = 3;///評価の種類
 
 class CResultScene 
 {
@@ -16,7 +19,8 @@ private:
 		RESULT_SCENE_NUM,
 	};
 	tagResultScene m_tagResultScene;//状態遷移
-	int m_Resulthndl;
+	int m_Resulthndl[EVALUATION_NUM];
+	CScore m_Score;
 
 public:
 	//コンストラクタ・デストラクタ

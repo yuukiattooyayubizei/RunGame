@@ -28,6 +28,9 @@ CPlayScene::~CPlayScene()
 
 void CPlayScene::Init()
 {
+	CData* Data = CData::GetInstance();
+	Data->Init();
+
 	m_Player = new CPlayer();
 	m_Object.push_back(m_Player);
 }
@@ -100,6 +103,8 @@ int CPlayScene::Step()
 
 	//ŽžŠÔ‚ði‚ß‚é
 	Data->AddTime();
+	Data->AddScore(Data->GetSpd());
+
 	//ˆê’èŽžŠÔ‚ªŒo‚Á‚½‚çã©‚ð~‚ç‚·
 	if (Data->GetTime() >= Data->GetTrapData().m_SpownInterval)
 	{
@@ -169,6 +174,7 @@ int CPlayScene::Step()
 
 void CPlayScene::Draw()
 {
+	CData* Data = CData::GetInstance();
 	//”wŒi‚Ì•`‰æ
 	m_BackGround.Draw();
 
@@ -178,4 +184,6 @@ void CPlayScene::Draw()
 
 	//•`‰æˆ—
 	DrawFormatString(32, 96, GetColor(255, 255, 255), "ƒvƒŒƒCƒV[ƒ“LƒL[‚ÅƒŠƒUƒ‹ƒg‚É‘JˆÚ");
+	DrawFormatString(32, 160, GetColor(255, 255, 255), "ˆÚ“®‹——£ = %d cm", (int)Data->GetScore());
+
 }

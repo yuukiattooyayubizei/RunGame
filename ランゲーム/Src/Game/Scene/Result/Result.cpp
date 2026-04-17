@@ -3,6 +3,7 @@
 #include "../../Common.h"
 #include "../../../Lib/Input/PadInput.h"
 #include "../../../Lib/Sound/sound.h"
+#include "../../Data/Data.h"
 
 
 
@@ -10,7 +11,11 @@
 CResultScene::CResultScene()
 {
 	m_tagResultScene = RESULT_SCENE_INIT;
-	m_Resulthndl = -1;
+	for (int i = 0; i >= EVALUATION_NUM; i++)
+	{
+		m_Resulthndl[i] = -1;
+	}
+
 }
 
 //デストラクタ
@@ -22,25 +27,44 @@ CResultScene::~CResultScene()
 void CResultScene::Init()
 {
 	m_tagResultScene = RESULT_SCENE_INIT;
+	m_Score.Init();
+	for (int i = 0; i <= EVALUATION_NUM - 1; i++)
+	{
+		m_Resulthndl[i] = -1;
+	}
 }
 
 void CResultScene::Exit()
 {
-	if (m_Resulthndl != -1)
+	if (m_Resulthndl[0] != -1)
 	{
-		DeleteGraph(m_Resulthndl);
-		m_Resulthndl = -1;
+		for (int i = 0; i <= EVALUATION_NUM-1; i++)
+		{
+			DeleteGraph(m_Resulthndl[i]);
+			m_Resulthndl[i] = -1;
+		}
 	}
+	m_Score.Exit();
 }
 
 void CResultScene::Load()
 {
-	if (m_Resulthndl == -1)
-		m_Resulthndl = LoadGraph("../Data/image/Result/Result.JPG");
+	CData* Data = CData::GetInstance();
+
+
+	if (m_Resulthndl[0] == -1)
+		for (int i = 0; i <= EVALUATION_NUM-1; i++)
+		{
+			m_Resulthndl[i] = LoadGraph("../Data/image/Result/Result.JPG");
+		}
+	m_Score.Load();
+
+	m_Score.SetScore(Data->GetScore());
 }
 
 int CResultScene::Loop()
 {
+
 	int m_ret = 0;
 
 	//状態遷移に応じて挙動を変更
@@ -78,6 +102,7 @@ int CResultScene::Loop()
 
 int CResultScene::Step()
 {
+	m_Score.Update();
 	if(CheckHitKey(KEY_INPUT_K))
 		return 1;
 
@@ -87,6 +112,24 @@ int CResultScene::Step()
 void CResultScene::Draw()
 {
 	//描画処理
-	DrawRotaGraph(SCREEN_SIZE_X / 2, SCREEN_SIZE_Y / 2, 1.0f, 0.0f, m_Resulthndl, TRUE);
+	if (m_Score.GetScore() >= 3000)
+	{
+		DrawRotaGraph(SCREEN_SIZE_X / 2, SCREEN_SIZE_Y / 2, 1.0f, 0.0f, m_Resulthndl[2], TRUE);
+		DrawFormatString(500, 364, GetColor(255, 255, 255), "○○3に到達！");
+	}
+	else if (m_Score.GetScore() >= 1000)
+	{
+		DrawRotaGraph(SCREEN_SIZE_X / 2, SCREEN_SIZE_Y / 2, 1.0f, 0.0f, m_Resulthndl[1], TRUE);
+		DrawFormatString(500, 364, GetColor(255, 255, 255), "○○2に到達！");
+	}
+	else
+	{
+		DrawRotaGraph(SCREEN_SIZE_X / 2, SCREEN_SIZE_Y / 2, 1.0f, 0.0f, m_Resulthndl[0], TRUE);
+		DrawFormatString(500, 364, GetColor(255, 255, 255), "○○1に到達！");
+	}
+
 	DrawFormatString(32, 96, GetColor(255, 255, 255), "Kキーでタイトルに遷移");
+	DrawFormatString(500, 332, GetColor(255, 255, 255), "あなたのカエルは");
+
+	m_Score.Draw();
 }

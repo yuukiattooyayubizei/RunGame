@@ -55,6 +55,9 @@
     <Filter Include="ソース ファイル\Lib\Sound">
       <UniqueIdentifier>{e4523b6f-b343-4640-85ae-5d978e771a1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Score">
+      <UniqueIdentifier>{c56176d2-6e48-4808-bc24-7bd0100b34af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Game\main.cpp">
@@ -101,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="..\Src\Lib\Sound\sound.cpp">
       <Filter>ソース ファイル\Lib\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Game\Score\Score.cpp">
+      <Filter>ソース ファイル\Score</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="..\Src\Lib\Sound\sound.h">
       <Filter>ソース ファイル\Lib\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Game\Score\Score.h">
+      <Filter>ソース ファイル\Score</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
